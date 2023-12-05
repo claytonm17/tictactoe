@@ -33,10 +33,60 @@ const gameBoard = ( () => {
         console.log('no winner yet')
         return null;
     }
+
+    const updateUI = () => {
+        console.log(board)
+    }
     
     return { 
         board,
         updateBoard,
         checkWinner,
+    };
+})();
+
+const playerX = ( () => {
+
+    const symbol = 'X';
+
+    return { symbol };
+})();
+
+const playerO = ( () => {
+
+    const symbol = 'O';
+
+    return { symbol };
+})();
+
+const gameLogic = ( () => {
+
+    const board = ['', '','', '', '', '', '', '', ''];
+
+    const getSymbol = () => {
+        // Alternates X to O
+        const filledCellCount = board.filter(cell => cell !== '').length
+        const isEvenTurn = filledCellCount % 2 === 0;
+
+        if (isEvenTurn) {
+            return playerX.symbol;
+        } else {
+            return playerO.symbol;
+        }
+    };
+
+    const setBoard = (index) => {
+        const symbol = getSymbol();
+        if (board[index] === '') {
+            board[index] = symbol;
+            console.log(`Set board[${index}] to ${symbol}`);
+        } else {
+            console.log(`Cell ${index} is occupied`)
+        }
+    }
+
+    return { 
+        setBoard,
+        board 
     };
 })();

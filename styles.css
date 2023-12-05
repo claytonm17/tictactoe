@@ -35,3 +35,8 @@ body {
     width: 150px;
     cursor: pointer;
 }
+
+.what-turn {
+    text-align: center;
+    padding-top: 10px;
+}

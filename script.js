@@ -18,6 +18,7 @@ const gameBoard = ( () => {
     return { 
         board,
         updateBoard,
+        updateUI,
     };
 })();
 
@@ -88,67 +89,105 @@ const gameLogic = ( () => {
         setBoard,
         board,
         checkWinner,
+        getSymbol,
     };
 })();
 
 // Creating the grid
-const createBoard = () => {
+const setupDOM = ( () => {
+    const createBoard = () => {
 
-    const grid = document.querySelector('.grid');
+        const grid = document.querySelector('.grid');
 
-    for (let i = 0; i < 9; i++){
-        let cell = document.createElement('div');
-        cell.setAttribute('id', `cell${i}`);
-        cell.className = 'cell';
-        grid.insertAdjacentElement('beforeend', cell)
+        for (let i = 0; i < 9; i++){
+            let cell = document.createElement('div');
+            cell.setAttribute('id', `cell${i}`);
+            cell.className = 'cell';
+            grid.insertAdjacentElement('beforeend', cell)
+        };
     };
-};
+    
+    // Create the actual board
+    createBoard();
 
-createBoard();
+    const cell0 = document.querySelector('#cell0')
+    const cell1 = document.querySelector('#cell1')
+    const cell2 = document.querySelector('#cell2')
+    const cell3 = document.querySelector('#cell3')
+    const cell4 = document.querySelector('#cell4')
+    const cell5 = document.querySelector('#cell5')
+    const cell6 = document.querySelector('#cell6')
+    const cell7 = document.querySelector('#cell7')
+    const cell8 = document.querySelector('#cell8')
 
-const cell0 = document.querySelector('#cell0')
-const cell1 = document.querySelector('#cell1')
-const cell2 = document.querySelector('#cell2')
-const cell3 = document.querySelector('#cell3')
-const cell4 = document.querySelector('#cell4')
-const cell5 = document.querySelector('#cell5')
-const cell6 = document.querySelector('#cell6')
-const cell7 = document.querySelector('#cell7')
-const cell8 = document.querySelector('#cell8')
+    cell0.addEventListener('click', () => {
+        gameLogic.setBoard(0);
+        gameLogic.checkWinner();
+        setupDOM.checkTurn();
+    })
+    cell1.addEventListener('click', () => {
+        gameLogic.setBoard(1);
+        gameLogic.checkWinner();
+        setupDOM.checkTurn();
+    })
+    cell2.addEventListener('click', () => {
+        gameLogic.setBoard(2);
+        gameLogic.checkWinner();
+        setupDOM.checkTurn();
+    })
+    cell3.addEventListener('click', () => {
+        gameLogic.setBoard(3);
+        gameLogic.checkWinner();
+        setupDOM.checkTurn();
+    })
+    cell4.addEventListener('click', () => {
+        gameLogic.setBoard(4);
+        gameLogic.checkWinner();
+        setupDOM.checkTurn();
+    })
+    cell5.addEventListener('click', () => {
+        gameLogic.setBoard(5);
+        gameLogic.checkWinner();
+        setupDOM.checkTurn();
+    })
+    cell6.addEventListener('click', () => {
+        gameLogic.setBoard(6);
+        gameLogic.checkWinner();
+        setupDOM.checkTurn();
+    })
+    cell7.addEventListener('click', () => {
+        gameLogic.setBoard(7);
+        gameLogic.checkWinner();
+        setupDOM.checkTurn();
+    })
+    cell8.addEventListener('click', () => {
+        gameLogic.setBoard(8);
+        gameLogic.checkWinner();
+        setupDOM.checkTurn();
+    })
 
-cell0.addEventListener('click', () => {
-    gameLogic.setBoard(0);
-    gameLogic.checkWinner();
-})
-cell1.addEventListener('click', () => {
-    gameLogic.setBoard(1);
-    gameLogic.checkWinner();
-})
-cell2.addEventListener('click', () => {
-    gameLogic.setBoard(2);
-    gameLogic.checkWinner();
-})
-cell3.addEventListener('click', () => {
-    gameLogic.setBoard(3);
-    gameLogic.checkWinner();
-})
-cell4.addEventListener('click', () => {
-    gameLogic.setBoard(4);
-    gameLogic.checkWinner();
-})
-cell5.addEventListener('click', () => {
-    gameLogic.setBoard(5);
-    gameLogic.checkWinner();
-})
-cell6.addEventListener('click', () => {
-    gameLogic.setBoard(6);
-    gameLogic.checkWinner();
-})
-cell7.addEventListener('click', () => {
-    gameLogic.setBoard(7);
-    gameLogic.checkWinner();
-})
-cell8.addEventListener('click', () => {
-    gameLogic.setBoard(8);
-    gameLogic.checkWinner();
-})
+    // DOM object to display which turn it is
+    const turn = document.querySelector('.turn');
+
+    const checkTurn = () => {
+
+        while (turn.firstChild) {
+            turn.removeChild(turn.firstChild);
+        }
+
+        const currentPlayerSymbol = gameLogic.getSymbol();
+        const playerName = (currentPlayerSymbol === 'X') ? "Player X" : "Player O";
+
+        const whichTurn = document.createElement('h2');
+        whichTurn.className = 'what-turn';
+        whichTurn.textContent = `${playerName}'s turn`;
+        turn.appendChild(whichTurn);
+    };
+
+    return { 
+        checkTurn, 
+    };
+})();
+
+setupDOM.checkTurn();
+

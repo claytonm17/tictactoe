@@ -117,29 +117,38 @@ const cell7 = document.querySelector('#cell7')
 const cell8 = document.querySelector('#cell8')
 
 cell0.addEventListener('click', () => {
-    console.log('Click cell 0');
+    gameLogic.setBoard(0);
+    gameLogic.checkWinner();
 })
 cell1.addEventListener('click', () => {
-    console.log('Click cell 1');
+    gameLogic.setBoard(1);
+    gameLogic.checkWinner();
 })
 cell2.addEventListener('click', () => {
-    console.log('Click cell 2');
+    gameLogic.setBoard(2);
+    gameLogic.checkWinner();
 })
 cell3.addEventListener('click', () => {
-    console.log('Click cell 3');
+    gameLogic.setBoard(3);
+    gameLogic.checkWinner();
 })
 cell4.addEventListener('click', () => {
-    console.log('Click cell 4');
+    gameLogic.setBoard(4);
+    gameLogic.checkWinner();
 })
 cell5.addEventListener('click', () => {
-    console.log('Click cell 5');
+    gameLogic.setBoard(5);
+    gameLogic.checkWinner();
 })
 cell6.addEventListener('click', () => {
-    console.log('Click cell 6');
+    gameLogic.setBoard(6);
+    gameLogic.checkWinner();
 })
 cell7.addEventListener('click', () => {
-    console.log('Click cell 7');
+    gameLogic.setBoard(7);
+    gameLogic.checkWinner();
 })
 cell8.addEventListener('click', () => {
-    console.log('Click cell 8');
+    gameLogic.setBoard(8);
+    gameLogic.checkWinner();
 })

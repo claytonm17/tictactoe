@@ -90,3 +90,56 @@ const gameLogic = ( () => {
         checkWinner,
     };
 })();
+
+// Creating the grid
+const createBoard = () => {
+
+    const grid = document.querySelector('.grid');
+
+    for (let i = 0; i < 9; i++){
+        let cell = document.createElement('div');
+        cell.setAttribute('id', `cell${i}`);
+        cell.className = 'cell';
+        grid.insertAdjacentElement('beforeend', cell)
+    };
+};
+
+createBoard();
+
+const cell0 = document.querySelector('#cell0')
+const cell1 = document.querySelector('#cell1')
+const cell2 = document.querySelector('#cell2')
+const cell3 = document.querySelector('#cell3')
+const cell4 = document.querySelector('#cell4')
+const cell5 = document.querySelector('#cell5')
+const cell6 = document.querySelector('#cell6')
+const cell7 = document.querySelector('#cell7')
+const cell8 = document.querySelector('#cell8')
+
+cell0.addEventListener('click', () => {
+    console.log('Click cell 0');
+})
+cell1.addEventListener('click', () => {
+    console.log('Click cell 1');
+})
+cell2.addEventListener('click', () => {
+    console.log('Click cell 2');
+})
+cell3.addEventListener('click', () => {
+    console.log('Click cell 3');
+})
+cell4.addEventListener('click', () => {
+    console.log('Click cell 4');
+})
+cell5.addEventListener('click', () => {
+    console.log('Click cell 5');
+})
+cell6.addEventListener('click', () => {
+    console.log('Click cell 6');
+})
+cell7.addEventListener('click', () => {
+    console.log('Click cell 7');
+})
+cell8.addEventListener('click', () => {
+    console.log('Click cell 8');
+})

@@ -83,6 +83,7 @@ const setupDOM = ( () => {
 
             // Simplifying event listener for each cell
             cell.addEventListener('click', () => {
+                setupDOM.updateSymbol(i);
                 gameLogic.setBoard(i);
                 gameLogic.checkWinner();
                 setupDOM.checkTurn();
@@ -110,8 +111,14 @@ const setupDOM = ( () => {
         turn.appendChild(whichTurn);
     };
 
+    const updateSymbol = (index) => {
+        const spot = document.querySelector(`#cell${index}`);
+        spot.textContent = gameLogic.getSymbol();
+    }
+
     return { 
         checkTurn, 
+        updateSymbol,
     };
 })();
 

@@ -54,6 +54,7 @@ const gameLogic = ( () => {
             const [a, b, c] = condition;
             if (board[a] && board[a] === board[b] && board[b] === board[c]){
                 console.log(`The winner is ${board[a]}`);
+                setupDOM.highlightWinner(condition);
                 return board[a];
             }
         }
@@ -116,9 +117,17 @@ const setupDOM = ( () => {
         spot.textContent = gameLogic.getSymbol();
     }
 
+    const highlightWinner = (winningCells) => {
+        for (const cellSpot of winningCells) {
+            const cell = document.querySelector(`#cell${cellSpot}`);
+            cell.classList.add('winner');
+        }
+    }
+
     return { 
         checkTurn, 
         updateSymbol,
+        highlightWinner,
     };
 })();
 

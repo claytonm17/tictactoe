@@ -62,11 +62,21 @@ const gameLogic = ( () => {
         return null;
     }
 
+    const resetBoard = () => {
+        for (let i = 0; i < board.length; i++) {
+            board[i] = '';
+            const cell = document.querySelector(`#cell${i}`);
+            cell.textContent = '';
+            cell.classList.remove('winner');
+        }
+    }
+
     return { 
         setBoard,
         board,
         checkWinner,
         getSymbol,
+        resetBoard,
     };
 })();
 
@@ -123,6 +133,12 @@ const setupDOM = ( () => {
             cell.classList.add('winner');
         }
     }
+
+        // Event listener for reset button
+    const resetButton = document.querySelector('.reset')
+    resetButton.addEventListener('click', () => {
+        gameLogic.resetBoard();
+    });
 
     return { 
         checkTurn, 

@@ -138,6 +138,7 @@ const setupDOM = ( () => {
     const resetButton = document.querySelector('.reset')
     resetButton.addEventListener('click', () => {
         gameLogic.resetBoard();
+        setupDOM.checkTurn();
     });
 
     return { 

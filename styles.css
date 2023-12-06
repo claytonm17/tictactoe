@@ -30,12 +30,13 @@ body {
 }
 
 .cell {
-    border: 1px blue solid;
+    border: 3px teal solid;
     height: 150px;
     width: 150px;
     cursor: pointer;
     text-align: center;
     font-size: 6rem;
+    border-radius: 10px;
 }
 
 .what-turn {

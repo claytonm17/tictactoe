@@ -1,0 +1,1 @@
+Interaction tic-tac-toe game written in HTML, CSS, and Javascript. Built using IIFE module patterns. Live Preview 👉 https://claytonm17.github.io/tictactoe/
